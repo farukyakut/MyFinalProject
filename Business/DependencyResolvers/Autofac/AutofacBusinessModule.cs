@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Business.DependencyResolvers.Autofac
 {
-    //Autofac, IoC işlemi için kullanılan bir teknoloji // api program.cs2 deki servis ekleme işlemleri yapılıyor
+    //Autofac, IoC işlemi için kullanılan bir teknoloji // api program.cs' deki servis ekleme işlemleri yapılıyor
     //autofac kullanmamızın asıl sebebi AOP yapabilmek
     public class AutofacBusinessModule : Module
     {
@@ -22,6 +22,9 @@ namespace Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
